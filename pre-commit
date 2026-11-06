@@ -1,0 +1,47 @@
+#!/bin/bash
+
+CHECKLIST=(
+  "Did you fix you spelling? (you could run typos) "
+  "Did you do the test run or are you deliberately just quicksaving?"
+  "Now check your commit message! Are you fine with that?"
+)
+
+NO_REPLIES=(
+  "see you again in 1-30 min . . . "
+  "I see a commit -m fixed spelling incoming. do you want that?"
+  "let's pretend this did not happen..."
+  "Bold strategy. Let's see how that works out for you."
+  "'No'? In this economy?"
+  "Git Gud!"
+)
+
+# Hooks don't get stdin from the terminal, so read from /dev/tty.
+# If there is no terminal (CI, GUI clients), skip the checklist.
+if ! exec 3</dev/tty 2>/dev/null; then
+  echo "pre-commit: no terminal available, skipping checklist."
+  exit 0
+fi
+
+echo
+echo "Pre-commit checklist"
+echo "--------------------"
+
+for question in "${CHECKLIST[@]}"; do
+  while true; do
+    printf "%s [y/n] " "$question" > /dev/tty
+    read -r answer <&3
+    case "$answer" in
+      [Yy]|[Yy][Ee][Ss]) break ;;
+      [Nn]|[Nn][Oo])
+        echo "${NO_REPLIES[RANDOM % ${#NO_REPLIES[@]}]}"
+        echo
+        exit 1 ;;
+      *) echo "Please answer y or n." > /dev/tty ;;
+    esac
+  done
+done
+
+echo
+echo "LET's f*c*ing GO!"
+echo
+exit 0

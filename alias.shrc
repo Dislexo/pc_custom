@@ -1,0 +1,15 @@
+#!/bin/bash
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias y='yay'
+alias yS='yay -S'
+alias d='disown'
+alias p='python'
+alias cap='conda activate phonopy'
+alias C="~/.custom/shortsearch"
+alias zaz="yay"
+alias N="nvim"
+alias n="nvim"
+alias autoresponse="echo 'das ist ja fast so cute wie $USER'"
+alias GitCL="cp ~/.custom/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit"
+eval "$(thefuck --alias)"

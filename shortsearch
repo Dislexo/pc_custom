@@ -1,0 +1,85 @@
+#!/bin/bash
+if [ -z "$@" ]; then
+	echo "WARNING I REFUSE TO CONTINUE WITH THIS SICK USER!"
+	#sleep 5
+	#poweroff
+	exit 1
+fi
+
+case "$1" in
+	-h) echo "-a Amazon"
+		echo "-A Arch Wiki"
+		#echo "-b/-B ---" ebay?
+		echo "-C Crucible 7"
+		echo "-d DuckDuckGo"
+		echo "-E GGD"
+		echo "-F Flyeralarm"
+		echo "-g/G Google"
+		echo "-I Instagram"
+		echo "-K Kickstarter"
+		echo "-M Music(Spotyfy)"
+		echo "-n Nyara stream"
+		echo "-N Netflix"
+		echo "-O Outlook"
+		echo "-p Proxer"
+		echo "-P Pathfinder2 A.o.N."
+		echo "-r Reddit"
+		echo "-s Stackoverflow"
+		echo "-S Steam"
+		echo "-t T.i.s.s."
+		echo "-T GBD"
+		echo "-V VASP Wiki"
+		echo "-w Woher wissen sie das alles? Wikiipediaaaaa!"
+		echo "-W FOR SIGMAR!"
+		echo "-X Xtal structure lib"
+		echo "-Y YouTube"
+		exit 0							;;
+	-a) 	searchmod="amazon.de/s?k="				;;
+	-A)	searchmod="wiki.archlinux.org/index.php?search=" 	;;
+	-C)	searchmod="cubicle7games.com/en_EU/catalogsearch/result/?q=" 	;;
+	-d)	searchmod="duckduckgo.com/?q=" 				;;
+	-E)	echo "GOOD GIRL!"
+		exit 0							;;
+	-F)	searchmod="flyeralarm.com/at/search/all?q=" 		;;
+	-g) 	searchmod="google.com/search?q="			;;
+	-G) 	searchmod="letmegooglethat.com/?q=" 			;;
+	-I) 	searchmod="instagram.com/" 				;;
+	-K) 	searchmod="kickstarter.com/discover/advanced?ref=nav_search&term=" ;;
+	-m)	    searchmod="mail.google.com/mail/u/0/#search/"		;;
+	-M) 	searchmod="open.spotify.com/search/"	 		;;
+	-n) 	searchmod="https://www.twitch.tv/nyaravt" 			;;
+	-N) 	searchmod="netflix.com"			 		;;
+	-O)	    searchmod="outlook.office.com/mail/"			;;
+	-p) 	searchmod="proxer.me/search?s=search&name=" 		;;
+	-P) 	searchmod="2e.aonprd.com/Search.aspx?q=" 		;;
+	-r) 	searchmod="reddit.com/search/?q=" 			;;
+	-s) 	searchmod="stackoverflow.com/search?q=" 		;;
+	-S) 	searchmod="store.steampowered.com/search?term="		;;
+	-t) 	searchmod="tiss.tuwien.ac.at/adressbuch/adressbuch/suche?suchtext=" ;;
+	-T)	echo "GOOD BOY!"	
+		exit 0							;;
+	-V) 	searchmod="vasp.at/wiki/?search=" 			;;
+	-w)	    searchmod="en.wikipedia.org/wiki/" 			;;
+	-W) 	searchmod="warhammer.com/de-AT/plp?search=" 		;;
+	-X) 	searchmod="https://next-gen.materialsproject.org/materials?chemsys=" ;;
+	-Y) 	searchmod="youtube.com/results?search_query=" 		;;
+	*) 	# all else stuff open website
+		searchmod=""	;;
+	#vorlage
+	-x) 	searchmod="website" ;;
+esac
+
+for term in "$@"; do
+	if [ "$term" = "$1" ] && [ -n "$searchmod" ]; then
+		continue
+	elif [ -z "$query" ]; then
+		query="$term" 
+	else
+		query="$query+$term"
+	fi
+done
+
+#echo "$query"
+#echo "$searchmod"
+google-chrome-stable "$searchmod$query" & disown
+exit 0
