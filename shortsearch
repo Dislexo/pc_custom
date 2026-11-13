@@ -60,7 +60,7 @@ case "$1" in
 		exit 0							;;
 	-V) 	searchmod="vasp.at/wiki/?search=" 			;;
 	-w)	    searchmod="en.wikipedia.org/wiki/" 			;;
-	-W) 	searchmod="warhammer.com/de-AT/plp?search=" 		;;
+	-W) 	searchmod="https://www.warhammer.com/de-AT/plp?search=" 		;;
 	-X) 	searchmod="https://next-gen.materialsproject.org/materials?chemsys=" ;;
 	-Y) 	searchmod="youtube.com/results?search_query=" 		;;
 	*) 	# all else stuff open website

@@ -3,6 +3,7 @@
 CHECKLIST=(
   "Did you fix you spelling? (you could run typos) "
   "Did you do the test run or are you deliberately just quicksaving?"
+  "Did you coment your code so it's clear what is going on?"
   "Now check your commit message! Are you fine with that?"
 )
 
@@ -12,7 +13,8 @@ NO_REPLIES=(
   "let's pretend this did not happen..."
   "Bold strategy. Let's see how that works out for you."
   "'No'? In this economy?"
-  "Git Gud!"
+  "Git Gud! , get it? GIT as the program you trying to use :3"
+  "Take your time"
 )
 
 # Hooks don't get stdin from the terminal, so read from /dev/tty.
